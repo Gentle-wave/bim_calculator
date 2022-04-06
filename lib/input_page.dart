@@ -6,14 +6,24 @@ import 'reuseable_card.dart';
 
 const kbottomContainerheight = 60.00;
 const kactivecardcolor = Color.fromARGB(172, 115, 139, 156);
-const kconttainercolor = Colors.blueGrey;
+const kconttainercolor = Color.fromARGB(255, 132, 158, 172);
+const kbottomcontainercolor = Colors.blueGrey;
+
+enum Gender {
+  male,
+  female,
+}
 
 class Inputpage extends StatefulWidget {
+
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<Inputpage> {
+
+  Gender? selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,16 +36,30 @@ class _InputPageState extends State<Inputpage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReuseableCard(
-                    colour: kactivecardcolor,
-                    cardChild: Contchildren(icon: FontAwesomeIcons.mars, label: 'MALE',),
+                  child: GestureDetector(
+                    onTap: (){
+                    setState(() {
+                     selectedGender = Gender.male;
+                    });  
+                    },
+                    child: ReuseableCard(
+                      colour:  selectedGender == Gender.male ? kconttainercolor  : kactivecardcolor,
+                      cardChild: Contchildren(icon: FontAwesomeIcons.mars, label: 'MALE',),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: ReuseableCard(
-                    colour: kactivecardcolor,
-                  cardChild:Contchildren(icon: FontAwesomeIcons.venus, label: 'FEMALE',
-                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                      selectedGender = Gender.female; 
+                      });
+                    },
+                    child: ReuseableCard(
+                      colour: selectedGender == Gender.female ? kconttainercolor : kactivecardcolor,
+                    cardChild:Contchildren(icon: FontAwesomeIcons.venus, label: 'FEMALE',
+                    ),
+                    ),
                   ),
                 ),
               ],
@@ -63,7 +87,7 @@ class _InputPageState extends State<Inputpage> {
             ),
           ),
           Container(
-            color: kconttainercolor,
+            color: kbottomcontainercolor,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: kbottomContainerheight,
