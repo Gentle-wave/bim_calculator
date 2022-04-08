@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
-const labeltextstyle =  TextStyle(
-            fontSize: 18.0,
-            color: Colors.white70,
-);
 
 class Contchildren extends StatelessWidget {
-   const Contchildren({ this.icon, this.label});
+    // ignore: use_key_in_widget_constructors
+    Contchildren({ this.icon, this.label});
   final String? label;
   final IconData? icon;
 
@@ -26,7 +24,7 @@ class Contchildren extends StatelessWidget {
         ),
         Text(
           label!, 
-          style:labeltextstyle,
+          style : klabeltextstyle,
         ),
       ],
     );

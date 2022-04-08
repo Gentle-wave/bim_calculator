@@ -17,7 +17,7 @@ class BIMcalcalculator extends StatelessWidget {
           secondary: Colors.white,
         ),
         textTheme: TextTheme(
-          bodyText2: TextStyle(color: Colors.deepPurple),
+          bodyText2: TextStyle(color: Colors.black87),
         ),
         fontFamily: 'Georgia',
       ),
