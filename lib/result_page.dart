@@ -1,10 +1,17 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'package:bim_calculator/bottom_button.dart';
 import 'package:bim_calculator/reuseable_card.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class Results extends StatelessWidget {
-  const Results({Key? key}) : super(key: key);
+   Results({required this.bmiResult,required this.interpretation,required this.results});
+
+
+  final String bmiResult;
+  final String results;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +41,21 @@ class Results extends StatelessWidget {
             cardChild: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const [
+              children: [
                 Text(
-                  'NORMAL',
+                  results.toUpperCase(),
                   textAlign: TextAlign.center,
                   style: kresult,
                 ),
                 Text(
-                  '18.3',
+                  bmiResult,
                   textAlign: TextAlign.center,
                   style: kBMIstyle,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Your BMI result is low, you should eat more',
+                   interpretation,
                     textAlign: TextAlign.center,
                     style: kbodytext,
                   ),

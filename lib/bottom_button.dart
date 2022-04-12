@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
@@ -20,8 +22,8 @@ class Buttombutton extends StatelessWidget {
           ),
         ),
         color: kbottomcontainercolor,
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 10.0),
+        margin: const EdgeInsets.only(top: 10.0),
+        padding: const EdgeInsets.only(bottom: 10.0),
         width: double.infinity,
         height: kbottomContainerheight,
       ),
