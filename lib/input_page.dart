@@ -2,6 +2,7 @@
 //import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'calculator_brain.dart';
 import 'result_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'cont_children.dart';
@@ -197,14 +198,15 @@ class _InputPageState extends State<Inputpage> {
                               width: 10.00,
                             ),
                             RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onpressed: () {
-                                  setState(() {
+                              icon: FontAwesomeIcons.plus,
+                              onpressed: () {
+                                setState(
+                                  () {
                                     age++;
-                                  }
-                                  );
-                                }
-                                ),
+                                  },
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -217,9 +219,19 @@ class _InputPageState extends State<Inputpage> {
           Buttombutton(
             buttontitle: 'CALCULATE',
             onTap: () {
+              CalculatorBrain calc =
+                  //bmi was added because it can't be null, has no effect on the calculation.
+                  CalculatorBrain(height: height, weight: weight, bmi:0);
+
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Results()),
+                MaterialPageRoute(
+                  builder: (context) => Results(
+                    bmiResult: calc.calculateBMI(),
+                    interpretation: calc.getinterpretation(),
+                    results: calc.getResult(),
+                  ),
+                ),
               );
             },
           ),
@@ -228,5 +240,3 @@ class _InputPageState extends State<Inputpage> {
     );
   }
 }
-
-
